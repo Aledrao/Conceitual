@@ -1,0 +1,805 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://personagem.gd" type="Script" id=1]
+[ext_resource path="res://moeda.gd" type="Script" id=2]
+[ext_resource path="res://inimigo_bola.gd" type="Script" id=3]
+[ext_resource path="res://spike.tscn" type="PackedScene" id=4]
+[ext_resource path="res://inimigo_segue.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CylinderMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.0431373, 0.827451, 0.827451, 1 )
+
+[sub_resource type="CylinderShape" id=3]
+
+[sub_resource type="CylinderShape" id=4]
+
+[sub_resource type="CylinderShape" id=5]
+radius = 0.877784
+height = 0.217543
+
+[sub_resource type="CylinderShape" id=6]
+radius = 1.01598
+
+[sub_resource type="CylinderShape" id=25]
+radius = 0.901093
+height = 1.7957
+
+[sub_resource type="CubeMesh" id=7]
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 0.0941176, 0.560784, 0.0509804, 1 )
+
+[sub_resource type="SpatialMaterial" id=9]
+vertex_color_use_as_albedo = true
+albedo_color = Color( 0.603922, 0.423529, 0.129412, 1 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 0.20491, 0.172371, 0.203429 )
+
+[sub_resource type="PhysicsMaterial" id=11]
+
+[sub_resource type="CapsuleMesh" id=12]
+
+[sub_resource type="SpatialMaterial" id=13]
+albedo_color = Color( 0.0431373, 0.254902, 0.00784314, 1 )
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_color = Color( 0.764706, 0.47451, 0.0666667, 1 )
+metallic = 0.64
+metallic_specular = 0.86
+
+[sub_resource type="CubeMesh" id=15]
+
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 0.464762, 0.205921, 0.207747 )
+
+[sub_resource type="Animation" id=17]
+length = 7.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 3.5, 4.5, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 21.5732, 3.98719, 0 ), Vector3( 21.5732, 3.98719, 0 ), Vector3( 21.5732, 9.7834, 0 ), Vector3( 21.5732, 9.7834, 0 ), Vector3( 21.573, 3.987, 0 ) ]
+}
+
+[sub_resource type="CylinderShape" id=18]
+radius = 0.151797
+height = 0.0367696
+
+[sub_resource type="CylinderMesh" id=19]
+
+[sub_resource type="SpatialMaterial" id=20]
+albedo_color = Color( 0.878431, 0.831373, 0.0901961, 1 )
+
+[sub_resource type="BoxShape" id=21]
+extents = Vector3( 0.181907, 1.61697, 1 )
+
+[sub_resource type="SphereShape" id=22]
+
+[sub_resource type="SphereMesh" id=23]
+
+[sub_resource type="SpatialMaterial" id=24]
+albedo_color = Color( 0.960784, 0.0823529, 0.0823529, 1 )
+
+[node name="Node" type="Node"]
+
+[node name="personagem" type="KinematicBody" parent="."]
+transform = Transform( 0.137042, 0, 0, 0, 0.276543, 0, 0, 0, 0.137042, 0, 1.18936, 0 )
+collision_layer = 9
+collision_mask = 9
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="personagem"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0295785, -0.0243921, -0.168769 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="personagem"]
+transform = Transform( 1, 0, 0, 0, 0.984858, 0, 0, 0, 1, 0.0314521, -0.0278592, -0.163941 )
+shape = SubResource( 3 )
+
+[node name="Camera" type="Camera" parent="personagem"]
+transform = Transform( 7.29703, 0, 0, 0, 3.59935, 0.347341, 0, -0.700914, 7.26329, 0, 3.42732, 18.9641 )
+current = true
+
+[node name="pega_moeda" type="Area" parent="personagem"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="personagem/pega_moeda"]
+transform = Transform( 0.953369, 0, 0, 0, 1, 0, 0, 0, 0.953369, 0.0347497, 0, -0.162486 )
+shape = SubResource( 4 )
+
+[node name="mata" type="Area" parent="personagem"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0260714, -1.09296, -0.11882 )
+collision_layer = 4
+collision_mask = 4
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="personagem/mata"]
+shape = SubResource( 5 )
+
+[node name="morre" type="Area" parent="personagem"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0256968, 0, -0.160421 )
+collision_layer = 4
+collision_mask = 4
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="personagem/morre"]
+shape = SubResource( 6 )
+
+[node name="leva_tiro" type="Area" parent="personagem"]
+transform = Transform( 1.08116, 0, 0, 0, 1.0077, 0, 0, 0, 0.880394, 0, 0.0350227, 0 )
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape" type="CollisionShape" parent="personagem/leva_tiro"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0463487, 0.0456352, -0.165021 )
+shape = SubResource( 25 )
+
+[node name="chao" type="StaticBody" parent="."]
+transform = Transform( 2.62743, 0, 0, 0, 1.044, 0, 0, 0, 1.044, -2.79731, 0, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao2" type="StaticBody" parent="."]
+transform = Transform( 0.382828, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 2.54543, 0.457248, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao2"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao2"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao2"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao12" type="StaticBody" parent="."]
+transform = Transform( 0.382828, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 23.0879, 3.37061, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao12"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao12"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao12"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao13" type="StaticBody" parent="."]
+transform = Transform( 4.03829, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 30.6161, 9.86475, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="solo" type="MeshInstance" parent="chao13"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao13"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao13"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao9" type="StaticBody" parent="."]
+transform = Transform( 0.382828, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 19.0474, 1.27827, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao9"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao9"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao9"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao10" type="StaticBody" parent="."]
+transform = Transform( 0.382828, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 20.4062, 1.93256, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao10"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao10"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao10"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao11" type="StaticBody" parent="."]
+transform = Transform( 0.382828, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 21.7588, 2.6505, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao11"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao11"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao11"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao14" type="StaticBody" parent="."]
+transform = Transform( 3.88802, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 52.1285, 9.865, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao14"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao14"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao14"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao15" type="StaticBody" parent="."]
+transform = Transform( 0.110029, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 38.6838, 10.0957, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao15"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao15"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao15"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao16" type="StaticBody" parent="."]
+transform = Transform( 0.110029, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 44.1818, 10.0957, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao16"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao16"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao16"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao17" type="StaticBody" parent="."]
+transform = Transform( 0.996796, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 41.4631, 10.6132, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao17"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao17"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao17"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao5" type="StaticBody" parent="."]
+transform = Transform( 0.382828, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 8.82722, -0.686887, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao5"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao5"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao5"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao6" type="StaticBody" parent="."]
+transform = Transform( 0.382828, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 10.2019, -0.0275698, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao6"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao6"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao6"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao7" type="StaticBody" parent="."]
+transform = Transform( 2.10434, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 14.6171, 0.693751, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao7"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao7"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao7"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao3" type="StaticBody" parent="."]
+transform = Transform( 0.620806, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 5.49346, 0.943773, 0 )
+input_ray_pickable = false
+physics_material_override = SubResource( 11 )
+
+[node name="solo" type="MeshInstance" parent="chao3"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao3"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao3"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao4" type="StaticBody" parent="."]
+transform = Transform( 1.85113, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 4.79991, -1.31201, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao4"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao4"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao4"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.68204, 0 )
+light_energy = 1.68
+light_indirect_energy = 3.08
+light_specular = 0.67
+shadow_enabled = true
+shadow_bias = 0.79
+
+[node name="montanha1" type="MeshInstance" parent="."]
+transform = Transform( 21.7955, 0, 0, 0, 45.3099, 0, 0, 0, 12.4691, 8.22436, -31.6549, -33.843 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="montanha2" type="MeshInstance" parent="."]
+transform = Transform( 21.7955, 0, 0, 0, 45.3099, 0, 0, 0, 12.4691, -10.4656, -39.2763, -15.2242 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="montanha3" type="MeshInstance" parent="."]
+transform = Transform( 21.7955, 0, 0, 0, 45.3099, 0, 0, 0, 12.4691, 29.5803, -24.8557, -25.0134 )
+mesh = SubResource( 12 )
+material/0 = SubResource( 13 )
+
+[node name="plataforma" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.187769, 0, 0, 0, 2.23378, 21.5732, 9.7834, 0 )
+input_capture_on_drag = true
+
+[node name="MeshInstance" type="MeshInstance" parent="plataforma"]
+transform = Transform( 0.464968, 0, 0, 0, 0.206364, 0, 0, 0, 0.242233, 0, 0, 0 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="plataforma"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.1775, 0, 0, 0 )
+shape = SubResource( 16 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="plataforma"]
+autoplay = "plataforma"
+playback_process_mode = 0
+playback_speed = 0.5
+anims/plataforma = SubResource( 17 )
+
+[node name="moeda" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.05546, 2.30044, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.59993, 2.30044, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda2"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda2"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda7" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 35.0011, 10.7195, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda7"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda7"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda8" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 35.5456, 10.7195, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda8"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda8"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda9" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 41.2819, 11.4045, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda9"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda9"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda10" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 42.359, 11.4045, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda10"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda10"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda3" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6.11269, 2.30044, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda3"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda3"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda4" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.35984, -0.825376, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda4"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda4"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda5" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 12.054, 2.19391, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda5"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda5"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda6" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 23.1629, 3.97846, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda6"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda6"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="parede_inicial" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.19935, 1.78282, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="parede_inicial"]
+shape = SubResource( 21 )
+
+[node name="inimigo_bola" type="KinematicBody" parent="."]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 12.9191, 0.932066, 0 )
+collision_layer = 4
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="inimigo_bola"]
+shape = SubResource( 22 )
+
+[node name="MeshInstance" type="MeshInstance" parent="inimigo_bola"]
+mesh = SubResource( 23 )
+material/0 = SubResource( 24 )
+
+[node name="inimigo_bola2" type="KinematicBody" parent="."]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 25.8266, 10.0929, 0 )
+collision_layer = 4
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="inimigo_bola2"]
+shape = SubResource( 22 )
+
+[node name="MeshInstance" type="MeshInstance" parent="inimigo_bola2"]
+mesh = SubResource( 23 )
+material/0 = SubResource( 24 )
+
+[node name="spike" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 8.01328, -1.20486, 0 )
+
+[node name="spike2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 12.0004, 0.784128, 0 )
+
+[node name="spike3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 37.9413, 7.96243, 0 )
+
+[node name="spike4" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.0952, 7.96243, 0 )
+
+[node name="spike5" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.2381, 7.96243, 0 )
+
+[node name="spike6" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.3919, 7.96243, 0 )
+
+[node name="spike7" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.5392, 7.96243, 0 )
+
+[node name="spike8" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.693, 7.96243, 0 )
+
+[node name="spike9" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.8359, 7.96243, 0 )
+
+[node name="spike10" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.9897, 7.96243, 0 )
+
+[node name="spike11" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.1422, 7.96243, 0 )
+
+[node name="spike12" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.296, 7.96243, 0 )
+
+[node name="spike13" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.4389, 7.96243, 0 )
+
+[node name="spike14" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.5927, 7.96243, 0 )
+
+[node name="spike15" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.74, 7.96243, 0 )
+
+[node name="spike16" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.8939, 7.96243, 0 )
+
+[node name="spike17" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.0367, 7.96243, 0 )
+
+[node name="spike18" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.1906, 7.96243, 0 )
+
+[node name="spike19" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.3417, 7.96243, 0 )
+
+[node name="spike20" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.4955, 7.96243, 0 )
+
+[node name="spike21" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.6384, 7.96243, 0 )
+
+[node name="spike22" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.7923, 7.96243, 0 )
+
+[node name="spike23" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.9395, 7.96243, 0 )
+
+[node name="spike24" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.0934, 7.96243, 0 )
+
+[node name="spike25" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.2363, 7.96243, 0 )
+
+[node name="spike26" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.3901, 7.96243, 0 )
+
+[node name="spike27" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.5425, 7.96243, 0 )
+
+[node name="spike28" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.6964, 7.96243, 0 )
+
+[node name="spike29" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.8393, 7.96243, 0 )
+
+[node name="spike30" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.9931, 7.96243, 0 )
+
+[node name="spike31" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.1404, 7.96243, 0 )
+
+[node name="spike32" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.2942, 7.96243, 0 )
+
+[node name="spike33" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.4371, 7.96243, 0 )
+
+[node name="spike34" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.5909, 7.96243, 0 )
+
+[node name="spike35" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.7368, 7.96243, 0 )
+
+[node name="spike36" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.8907, 7.96243, 0 )
+
+[node name="spike37" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.0336, 7.96243, 0 )
+
+[node name="spike38" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.1874, 7.96243, 0 )
+
+[node name="spike39" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.3347, 7.96243, 0 )
+
+[node name="spike40" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.4885, 7.96243, 0 )
+
+[node name="spike41" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.6314, 7.96243, 0 )
+
+[node name="spike42" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.7852, 7.96243, 0 )
+
+[node name="spike43" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.9377, 7.96243, 0 )
+
+[node name="spike44" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.0915, 7.96243, 0 )
+
+[node name="spike45" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.2344, 7.96243, 0 )
+
+[node name="spike46" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.3882, 7.96243, 0 )
+
+[node name="spike47" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.5355, 7.96243, 0 )
+
+[node name="spike48" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.6894, 7.96243, 0 )
+
+[node name="spike49" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.8323, 7.96243, 0 )
+
+[node name="spike50" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.9861, 7.96243, 0 )
+
+[node name="inimigo_segue" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.177658, 0, 0, 0, -9.53059e-09, -0.218035, 0, 0.162416, -7.09943e-09, 58.1783, 10.6412, 0 )
+
+[connection signal="body_entered" from="personagem/pega_moeda" to="personagem" method="_on_pega_moeda_body_entered"]
+[connection signal="body_entered" from="personagem/mata" to="personagem" method="_on_mata_body_entered"]
+[connection signal="body_entered" from="personagem/morre" to="personagem" method="_on_morre_body_entered"]
+[connection signal="body_entered" from="personagem/leva_tiro" to="personagem" method="_on_leva_tiro_body_entered"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.25993
+height = 2.00337
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.764706, 0.764706, 0.764706, 1 )
+
+[sub_resource type="PrismMesh" id=3]
+
+[sub_resource type="CylinderShape" id=4]
+radius = 0.730579
+
+[node name="spike" type="StaticBody"]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 0, 0, 0 )
+collision_layer = 4
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.739169, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+material_override = SubResource( 2 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.26162, 0 )
+shape = SubResource( 4 )
