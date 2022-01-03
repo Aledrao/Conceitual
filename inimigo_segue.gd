@@ -2,11 +2,10 @@ extends KinematicBody
 
 const GRAVITY = -2
 const VELOCITY_Z = 0.5
-const RUN_SPEEDY = 2.8
+const RUN_SPEEDY = 2
 const MAXIMA_TIROS = 3
-const ATIRAR_ESQUERDA = "-"
-const ATIRAR_DIREITA = "+"
 const TEMPO_ANDANDO = 6
+const TEMPO_ATIRAR = .1
 
 var velocity = Vector3.ZERO
 var posicao_z
@@ -26,7 +25,7 @@ func _ready():
 	posicao_z = get_node(".").transform.origin.z
 	print("Vida monstro: ", vida)
 
-func _process(delta):
+func _physics_process(delta):
 	velocity.x = 0
 	velocity.z = 0
 	velocity.y += GRAVITY * delta
@@ -73,7 +72,7 @@ func _on_volta_andar_body_entered(body):
 
 func atirar(delta):
 	tempo_tiro += delta
-	if(quantidade_atirar <= MAXIMA_TIROS and tempo_tiro > .15):
+	if(quantidade_atirar <= MAXIMA_TIROS and tempo_tiro > TEMPO_ATIRAR):
 		andar = false
 		atirar = true
 

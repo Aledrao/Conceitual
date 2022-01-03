@@ -10,8 +10,8 @@
 albedo_color = Color( 0.901961, 0.619608, 0.0156863, 1 )
 
 [node name="tiro_inimigo" type="RigidBody"]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 16
+collision_mask = 16
 gravity_scale = 0.0
 can_sleep = false
 script = ExtResource( 1 )

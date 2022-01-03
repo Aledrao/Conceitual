@@ -45,7 +45,6 @@ func _on_pega_moeda_body_entered(body):
 	print("Moeda: ", coin)
 
 func _on_morre_body_entered(body):
-	print("1")
 	morte()
 
 func _on_mata_body_entered(body):
@@ -54,9 +53,11 @@ func _on_mata_body_entered(body):
 
 
 func _on_leva_tiro_body_entered(body):
-	print("2")
 	morte()
-	pass
 
 func morte():
 	get_node(".").queue_free()
+
+
+func _on_save_body_entered(body):
+	body.salvar()

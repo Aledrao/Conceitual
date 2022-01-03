@@ -41,7 +41,7 @@ transform = Transform( 1, 0, 0, 0, 1, -7.10543e-15, 0, 6.03961e-14, 1, 0, -8.292
 shape = SubResource( 4 )
 
 [node name="parar" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 31.9992, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 24.5554, 0, 0 )
 collision_layer = 8
 collision_mask = 8
 
@@ -50,7 +50,7 @@ transform = Transform( 1, 0, 0, 0, 1, -7.10543e-15, 0, 6.03961e-14, 1, 0, -8.292
 shape = SubResource( 4 )
 
 [node name="volta_andar" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 2.4869e-14, 0, -1.06581e-14, 1, 30.3543, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 2.4869e-14, 0, -1.06581e-14, 1, 22.9105, 0, 0 )
 collision_layer = 8
 collision_mask = 8
 
@@ -59,7 +59,7 @@ transform = Transform( 1, 0, 0, 0, 1, -7.10543e-15, 0, 6.03961e-14, 1, 0, -8.292
 shape = SubResource( 4 )
 
 [node name="ir_esquerda" type="Area" parent="."]
-transform = Transform( 0.159348, 0, 0, 0, 4.27708, -3.01871e-08, 0, -3.01874e-08, 3.58647, -2.7795, -1.3959e-07, -3.19345 )
+transform = Transform( 0.159348, 0, 0, 0, 4.27708, 1.85259e-07, 0, 1.85259e-07, 8.51531, -2.7795, -3.88462e-07, -8.88699 )
 collision_layer = 8
 collision_mask = 8
 
@@ -67,7 +67,7 @@ collision_mask = 8
 shape = SubResource( 5 )
 
 [node name="ir_direita" type="Area" parent="."]
-transform = Transform( 0.159348, 0, 0, 0, 4.27708, -3.0187e-08, 0, -3.01874e-08, 3.58647, 3.10872, -1.3959e-07, -3.19345 )
+transform = Transform( 0.159348, 0, 0, 0, 4.27708, 1.98844e-07, 0, 1.98843e-07, 8.8261, 3.10872, -3.96532e-07, -9.0716 )
 collision_layer = 8
 collision_mask = 8
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://personagem.gd" type="Script" id=1]
 [ext_resource path="res://moeda.gd" type="Script" id=2]
 [ext_resource path="res://inimigo_bola.gd" type="Script" id=3]
 [ext_resource path="res://spike.tscn" type="PackedScene" id=4]
 [ext_resource path="res://inimigo_segue.tscn" type="PackedScene" id=5]
+[ext_resource path="res://save.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CylinderMesh" id=1]
 
@@ -25,6 +26,10 @@ radius = 1.01598
 [sub_resource type="CylinderShape" id=25]
 radius = 0.901093
 height = 1.7957
+
+[sub_resource type="CylinderShape" id=26]
+radius = 0.155437
+height = 1.36415
 
 [sub_resource type="CubeMesh" id=7]
 
@@ -112,6 +117,7 @@ transform = Transform( 7.29703, 0, 0, 0, 3.59935, 0.347341, 0, -0.700914, 7.2632
 current = true
 
 [node name="pega_moeda" type="Area" parent="personagem"]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -121,6 +127,7 @@ shape = SubResource( 4 )
 
 [node name="mata" type="Area" parent="personagem"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0260714, -1.09296, -0.11882 )
+visible = false
 collision_layer = 4
 collision_mask = 4
 __meta__ = {
@@ -132,6 +139,7 @@ shape = SubResource( 5 )
 
 [node name="morre" type="Area" parent="personagem"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0256968, 0, -0.160421 )
+visible = false
 collision_layer = 4
 collision_mask = 4
 __meta__ = {
@@ -142,16 +150,29 @@ __meta__ = {
 shape = SubResource( 6 )
 
 [node name="leva_tiro" type="Area" parent="personagem"]
-transform = Transform( 1.08116, 0, 0, 0, 1.0077, 0, 0, 0, 0.880394, 0, 0.0350227, 0 )
+transform = Transform( 0.959628, 0, 0, 0, 1.0077, 0, 0, 0, 0.880394, -0.0122573, 0.0350227, 0.0387616 )
+visible = false
 collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape" type="CollisionShape" parent="personagem/leva_tiro"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0463487, 0.0456352, -0.165021 )
 shape = SubResource( 25 )
+disabled = true
+
+[node name="save" type="Area" parent="personagem"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.199079 )
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape" type="CollisionShape" parent="personagem/save"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 26 )
 
 [node name="chao" type="StaticBody" parent="."]
 transform = Transform( 2.62743, 0, 0, 0, 1.044, 0, 0, 0, 1.044, -2.79731, 0, 0 )
+collision_layer = 33
+collision_mask = 33
 
 [node name="solo" type="MeshInstance" parent="chao"]
 transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
@@ -273,7 +294,9 @@ transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055
 shape = SubResource( 10 )
 
 [node name="chao14" type="StaticBody" parent="."]
-transform = Transform( 3.88802, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 52.1285, 9.865, 0 )
+transform = Transform( 7.626, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 58.6023, 9.865, 0 )
+collision_layer = 33
+collision_mask = 33
 
 [node name="solo" type="MeshInstance" parent="chao14"]
 transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
@@ -451,7 +474,7 @@ mesh = SubResource( 12 )
 material/0 = SubResource( 13 )
 
 [node name="plataforma" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.187769, 0, 0, 0, 2.23378, 21.5732, 9.7834, 0 )
+transform = Transform( 1, 0, 0, 0, 0.187769, 0, 0, 0, 2.23378, 21.5732, 5.61013, 0 )
 input_capture_on_drag = true
 
 [node name="MeshInstance" type="MeshInstance" parent="plataforma"]
@@ -646,6 +669,21 @@ shape = SubResource( 22 )
 mesh = SubResource( 23 )
 material/0 = SubResource( 24 )
 
+[node name="inimigo_bola3" type="KinematicBody" parent="."]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 63.6994, 10.0929, 0 )
+collision_layer = 4
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="inimigo_bola3"]
+shape = SubResource( 22 )
+
+[node name="MeshInstance" type="MeshInstance" parent="inimigo_bola3"]
+mesh = SubResource( 23 )
+material/0 = SubResource( 24 )
+
 [node name="spike" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 8.01328, -1.20486, 0 )
 
@@ -797,9 +835,13 @@ transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.8323,
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.9861, 7.96243, 0 )
 
 [node name="inimigo_segue" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.177658, 0, 0, 0, -9.53059e-09, -0.218035, 0, 0.162416, -7.09943e-09, 58.1783, 10.6412, 0 )
+transform = Transform( 0.177658, 0, 0, 0, -9.53059e-09, -0.218035, 0, 0.162416, -7.09943e-09, 50.6034, 10.3413, 0 )
+
+[node name="save" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 62.5126, 10.8358, -0.222234 )
 
 [connection signal="body_entered" from="personagem/pega_moeda" to="personagem" method="_on_pega_moeda_body_entered"]
 [connection signal="body_entered" from="personagem/mata" to="personagem" method="_on_mata_body_entered"]
 [connection signal="body_entered" from="personagem/morre" to="personagem" method="_on_morre_body_entered"]
 [connection signal="body_entered" from="personagem/leva_tiro" to="personagem" method="_on_leva_tiro_body_entered"]
+[connection signal="body_entered" from="personagem/save" to="personagem" method="_on_save_body_entered"]
