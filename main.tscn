@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://personagem.gd" type="Script" id=1]
 [ext_resource path="res://moeda.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://spike.tscn" type="PackedScene" id=4]
 [ext_resource path="res://inimigo_segue.tscn" type="PackedScene" id=5]
 [ext_resource path="res://save.tscn" type="PackedScene" id=6]
+[ext_resource path="res://trofeu.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CylinderMesh" id=1]
 
@@ -30,6 +31,12 @@ height = 1.7957
 [sub_resource type="CylinderShape" id=26]
 radius = 0.155437
 height = 1.36415
+
+[sub_resource type="CylinderShape" id=28]
+radius = 0.333081
+height = 0.789922
+
+[sub_resource type="CylinderShape" id=29]
 
 [sub_resource type="CubeMesh" id=7]
 
@@ -61,6 +68,22 @@ metallic_specular = 0.86
 extents = Vector3( 0.464762, 0.205921, 0.207747 )
 
 [sub_resource type="Animation" id=17]
+length = 7.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 3.5, 4.5, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 21.5732, 3.98719, 0 ), Vector3( 21.5732, 3.98719, 0 ), Vector3( 21.5732, 9.7834, 0 ), Vector3( 21.5732, 9.7834, 0 ), Vector3( 21.573, 3.987, 0 ) ]
+}
+
+[sub_resource type="Animation" id=27]
 length = 7.0
 loop = true
 tracks/0/type = "value"
@@ -113,11 +136,9 @@ transform = Transform( 1, 0, 0, 0, 0.984858, 0, 0, 0, 1, 0.0314521, -0.0278592, 
 shape = SubResource( 3 )
 
 [node name="Camera" type="Camera" parent="personagem"]
-transform = Transform( 7.29703, 0, 0, 0, 3.59935, 0.347341, 0, -0.700914, 7.26329, 0, 3.42732, 18.9641 )
-current = true
+transform = Transform( 7.29703, 0, 0, 0, 3.52748, 0.795542, 0, -1.60536, 7.11825, 0, 4.38803, 20.5645 )
 
 [node name="pega_moeda" type="Area" parent="personagem"]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -127,7 +148,6 @@ shape = SubResource( 4 )
 
 [node name="mata" type="Area" parent="personagem"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0260714, -1.09296, -0.11882 )
-visible = false
 collision_layer = 4
 collision_mask = 4
 __meta__ = {
@@ -139,7 +159,6 @@ shape = SubResource( 5 )
 
 [node name="morre" type="Area" parent="personagem"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0256968, 0, -0.160421 )
-visible = false
 collision_layer = 4
 collision_mask = 4
 __meta__ = {
@@ -151,14 +170,13 @@ shape = SubResource( 6 )
 
 [node name="leva_tiro" type="Area" parent="personagem"]
 transform = Transform( 0.959628, 0, 0, 0, 1.0077, 0, 0, 0, 0.880394, -0.0122573, 0.0350227, 0.0387616 )
-visible = false
 collision_layer = 16
 collision_mask = 16
+monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="personagem/leva_tiro"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0463487, 0.0456352, -0.165021 )
 shape = SubResource( 25 )
-disabled = true
 
 [node name="save" type="Area" parent="personagem"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.199079 )
@@ -166,8 +184,23 @@ collision_layer = 32
 collision_mask = 32
 
 [node name="CollisionShape" type="CollisionShape" parent="personagem/save"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 26 )
+
+[node name="finalizar" type="Area" parent="personagem"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape" type="CollisionShape" parent="personagem/finalizar"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0773483, 0, -0.181143 )
+shape = SubResource( 28 )
+
+[node name="spike_attack" type="Area" parent="personagem"]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape" type="CollisionShape" parent="personagem/spike_attack"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 29 )
 
 [node name="chao" type="StaticBody" parent="."]
 transform = Transform( 2.62743, 0, 0, 0, 1.044, 0, 0, 0, 1.044, -2.79731, 0, 0 )
@@ -363,6 +396,93 @@ material/0 = SubResource( 9 )
 transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
 shape = SubResource( 10 )
 
+[node name="chao18" type="StaticBody" parent="."]
+transform = Transform( 0.996796, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 73.9211, 9.08281, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao18"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao18"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao18"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao19" type="StaticBody" parent="."]
+transform = Transform( 3.18454, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 81.4338, 8.28689, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao19"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao19"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao19"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao20" type="StaticBody" parent="."]
+transform = Transform( 0.758735, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 89.9634, 7.70751, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao20"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao20"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao20"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao21" type="StaticBody" parent="."]
+transform = Transform( 3.1247, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 96.9321, 7.35236, 0 )
+
+[node name="solo" type="MeshInstance" parent="chao21"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao21"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao21"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
+[node name="chao22" type="StaticBody" parent="."]
+transform = Transform( 3.1247, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 108.161, 8.16942, 0 )
+collision_layer = 65
+collision_mask = 65
+
+[node name="solo" type="MeshInstance" parent="chao22"]
+transform = Transform( 1.77811, 0, 0, 0, 0.0642286, 0, 0, 0, 0.61141, -0.000983298, -0.0973629, -0.00298274 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="subsolo" type="MeshInstance" parent="chao22"]
+transform = Transform( 1.77811, 0, 0, 0, 0.374278, 0, 0, 0, 0.61141, 0, -0.530423, 0 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="chao22"]
+transform = Transform( 8.72955, 0, 0, 0, 2.50507, 0, 0, 0, 2.98754, 0, -0.471055, 0 )
+shape = SubResource( 10 )
+
 [node name="chao5" type="StaticBody" parent="."]
 transform = Transform( 0.382828, 0, 0, 0, 1.044, 0, 0, 0, 1.044, 8.82722, -0.686887, 0 )
 
@@ -474,8 +594,9 @@ mesh = SubResource( 12 )
 material/0 = SubResource( 13 )
 
 [node name="plataforma" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.187769, 0, 0, 0, 2.23378, 21.5732, 5.61013, 0 )
+transform = Transform( 1, 0, 0, 0, 0.187769, 0, 0, 0, 2.23378, 21.5732, 3.98719, 0 )
 input_capture_on_drag = true
+motion/sync_to_physics = true
 
 [node name="MeshInstance" type="MeshInstance" parent="plataforma"]
 transform = Transform( 0.464968, 0, 0, 0, 0.206364, 0, 0, 0, 0.242233, 0, 0, 0 )
@@ -492,6 +613,26 @@ autoplay = "plataforma"
 playback_process_mode = 0
 playback_speed = 0.5
 anims/plataforma = SubResource( 17 )
+
+[node name="plataforma2" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.187769, 0, 0, 0, 2.23378, 21.5732, 3.98719, 0 )
+input_capture_on_drag = true
+
+[node name="MeshInstance" type="MeshInstance" parent="plataforma2"]
+transform = Transform( 0.464968, 0, 0, 0, 0.206364, 0, 0, 0, 0.242233, 0, 0, 0 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="plataforma2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.1775, 0, 0, 0 )
+shape = SubResource( 16 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="plataforma2"]
+autoplay = "plataforma"
+playback_process_mode = 0
+playback_speed = 0.5
+anims/plataforma = SubResource( 27 )
 
 [node name="moeda" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.05546, 2.30044, 0 )
@@ -550,7 +691,7 @@ mesh = SubResource( 19 )
 material/0 = SubResource( 20 )
 
 [node name="moeda9" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 41.2819, 11.4045, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 41.2819, 11.6268, 0 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 2 )
@@ -564,7 +705,7 @@ mesh = SubResource( 19 )
 material/0 = SubResource( 20 )
 
 [node name="moeda10" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 42.359, 11.4045, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 42.359, 11.6268, 0 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 2 )
@@ -573,6 +714,160 @@ script = ExtResource( 2 )
 shape = SubResource( 18 )
 
 [node name="MeshInstance" type="MeshInstance" parent="moeda10"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda11" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 71.3044, 11.0393, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda11"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda11"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda12" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 73.4312, 11.0393, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda12"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda12"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda13" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 76.2987, 8.56252, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda13"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda13"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda14" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 76.7441, 8.56252, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda14"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda14"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda15" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 77.2121, 8.56252, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda15"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda15"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda16" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 85.467, 9.23444, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda16"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda16"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda17" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 86.0486, 9.23444, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda17"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda17"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda18" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 86.6252, 9.23444, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda18"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda18"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda19" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 94.5578, 8.64626, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda19"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda19"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda20" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 97.8585, 8.64626, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda20"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda20"]
+transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
+
+[node name="moeda21" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 100.64, 8.64626, 0 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="moeda21"]
+shape = SubResource( 18 )
+
+[node name="MeshInstance" type="MeshInstance" parent="moeda21"]
 transform = Transform( 0.154258, 0, 0, 0, 0.0232909, 5.72478e-09, 0, 5.72478e-09, 0.154258, 0, 0, 0 )
 mesh = SubResource( 19 )
 material/0 = SubResource( 20 )
@@ -606,7 +901,7 @@ mesh = SubResource( 19 )
 material/0 = SubResource( 20 )
 
 [node name="moeda5" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 12.054, 2.19391, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 11.9844, 1.94095, 0 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 2 )
@@ -684,164 +979,352 @@ shape = SubResource( 22 )
 mesh = SubResource( 23 )
 material/0 = SubResource( 24 )
 
+[node name="inimigo_bola4" type="KinematicBody" parent="."]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 92.5528, 7.60199, 0 )
+collision_layer = 4
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="inimigo_bola4"]
+shape = SubResource( 22 )
+
+[node name="MeshInstance" type="MeshInstance" parent="inimigo_bola4"]
+mesh = SubResource( 23 )
+material/0 = SubResource( 24 )
+
+[node name="inimigo_bola5" type="KinematicBody" parent="."]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 97.4509, 7.60199, 0 )
+collision_layer = 4
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="inimigo_bola5"]
+shape = SubResource( 22 )
+
+[node name="MeshInstance" type="MeshInstance" parent="inimigo_bola5"]
+mesh = SubResource( 23 )
+material/0 = SubResource( 24 )
+
 [node name="spike" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 8.01328, -1.20486, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike2" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 12.0004, 0.784128, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike3" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 37.9413, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike4" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.0952, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike5" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.2381, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike6" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.3919, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike7" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.5392, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike8" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.693, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike9" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.8359, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike10" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.9897, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike11" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.1422, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike12" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.296, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike13" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.4389, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike14" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.5927, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike15" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.74, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike16" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.8939, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike17" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.0367, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike18" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.1906, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike19" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.3417, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike20" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.4955, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike21" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.6384, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike22" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.7923, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike23" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.9395, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike24" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.0934, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike25" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.2363, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike26" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.3901, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike27" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.5425, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike28" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.6964, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike29" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.8393, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike30" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.9931, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike31" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.1404, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike32" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.2942, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike33" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.4371, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike34" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.5909, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike35" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.7368, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike36" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.8907, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike37" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.0336, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike38" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.1874, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike39" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.3347, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike40" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.4885, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike41" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.6314, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike42" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.7852, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike43" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.9377, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike44" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.0915, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike45" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.2344, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike46" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.3882, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike47" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.5355, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike48" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.6894, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike49" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.8323, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="spike50" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 44.9861, 7.96243, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike51" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 87.1882, 7.2456, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike52" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 87.3327, 7.2456, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike53" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 87.4828, 7.2456, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike54" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 87.6219, 7.2456, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike55" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 87.7619, 7.2456, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike56" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 87.9145, 7.2456, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike57" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 88.0515, 7.2456, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike58" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 88.2007, 7.2456, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike59" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 88.3533, 7.2456, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike60" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 88.4903, 7.2456, 0 )
+collision_layer = 128
+collision_mask = 128
 
 [node name="inimigo_segue" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.177658, 0, 0, 0, -9.53059e-09, -0.218035, 0, 0.162416, -7.09943e-09, 50.6034, 10.3413, 0 )
 
+[node name="inimigo_segue2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.177658, 0, 0, 0, -9.53059e-09, -0.218035, 0, 0.162416, -7.09943e-09, 81.2696, 8.61552, 0 )
+
 [node name="save" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 62.5126, 10.8358, -0.222234 )
+
+[node name="trofeu" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 110.908, 8.1594, 0 )
 
 [connection signal="body_entered" from="personagem/pega_moeda" to="personagem" method="_on_pega_moeda_body_entered"]
 [connection signal="body_entered" from="personagem/mata" to="personagem" method="_on_mata_body_entered"]
 [connection signal="body_entered" from="personagem/morre" to="personagem" method="_on_morre_body_entered"]
 [connection signal="body_entered" from="personagem/leva_tiro" to="personagem" method="_on_leva_tiro_body_entered"]
 [connection signal="body_entered" from="personagem/save" to="personagem" method="_on_save_body_entered"]
+[connection signal="body_entered" from="personagem/finalizar" to="personagem" method="_on_finalizar_body_entered"]
+[connection signal="body_entered" from="personagem/spike_attack" to="personagem" method="_on_spike_attack_body_entered"]
