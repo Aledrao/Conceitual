@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://personagem.gd" type="Script" id=1]
 [ext_resource path="res://moeda.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://inimigo_segue.tscn" type="PackedScene" id=5]
 [ext_resource path="res://save.tscn" type="PackedScene" id=6]
 [ext_resource path="res://trofeu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://pause_menu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://CHIBY LOVER DEMO.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="CylinderMesh" id=1]
 
@@ -118,6 +120,11 @@ extents = Vector3( 0.181907, 1.61697, 1 )
 [sub_resource type="SpatialMaterial" id=24]
 albedo_color = Color( 0.960784, 0.0823529, 0.0823529, 1 )
 
+[sub_resource type="DynamicFont" id=30]
+size = 30
+outline_size = 2
+font_data = ExtResource( 9 )
+
 [node name="Node" type="Node"]
 
 [node name="personagem" type="KinematicBody" parent="."]
@@ -199,7 +206,6 @@ collision_layer = 128
 collision_mask = 128
 
 [node name="CollisionShape" type="CollisionShape" parent="personagem/spike_attack"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 29 )
 
 [node name="chao" type="StaticBody" parent="."]
@@ -1320,6 +1326,85 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 62.5126, 10.8358, -0.222234 )
 
 [node name="trofeu" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 110.908, 8.1594, 0 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="pause_menu" parent="CanvasLayer" instance=ExtResource( 8 )]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 120.0
+margin_top = 67.0
+margin_right = -66.0
+margin_bottom = -63.0
+
+[node name="life" type="Label" parent="CanvasLayer"]
+margin_left = 136.0
+margin_top = 4.0
+margin_right = 277.0
+margin_bottom = 53.0
+custom_fonts/font = SubResource( 30 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="X" type="Label" parent="CanvasLayer"]
+margin_left = 103.0
+margin_top = 2.0
+margin_right = 131.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 30 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vidas" type="Label" parent="CanvasLayer"]
+margin_left = 8.0
+margin_top = 2.0
+margin_right = 92.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 30 )
+text = "Vidas"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="coins" type="Label" parent="CanvasLayer"]
+margin_left = 137.0
+margin_top = 49.0
+margin_right = 278.0
+margin_bottom = 98.0
+custom_fonts/font = SubResource( 30 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="X2" type="Label" parent="CanvasLayer"]
+margin_left = 105.0
+margin_top = 46.0
+margin_right = 133.0
+margin_bottom = 96.0
+custom_fonts/font = SubResource( 30 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="O" type="Label" parent="CanvasLayer"]
+margin_left = 72.0
+margin_top = 47.0
+margin_right = 100.0
+margin_bottom = 96.0
+custom_colors/font_color = Color( 0.756863, 0.760784, 0.0705882, 1 )
+custom_colors/font_outline_modulate = Color( 0.890196, 0.858824, 0.109804, 1 )
+custom_fonts/font = SubResource( 30 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="body_entered" from="personagem/pega_moeda" to="personagem" method="_on_pega_moeda_body_entered"]
 [connection signal="body_entered" from="personagem/mata" to="personagem" method="_on_mata_body_entered"]

@@ -32,7 +32,7 @@ func get_input():
 		var right = Input.is_action_pressed("ui_right")
 		var left = Input.is_action_pressed("ui_left")
 		var jump = Input.is_action_just_pressed("ui_up")
-		var pause = Input.is_action_just_pressed("ui_cancel")
+		#var pause = Input.is_action_just_pressed("ui_cancel")
 		
 		
 		if is_on_floor() and jump:
@@ -41,12 +41,7 @@ func get_input():
 			velocity.x += RUN_SPEEDY
 		if left:
 			velocity.x -= RUN_SPEEDY
-		if pause:
-			if get_tree().paused == false:
-				get_tree().paused = true
-			else:
-				get_tree().paused = false
-			
+		
 		if posicao_z < get_node(".").transform.origin.z:
 			velocity.z -= VELOCITY_Z
 		if posicao_z > get_node(".").transform.origin.z:
@@ -56,6 +51,8 @@ func _physics_process(delta):
 	velocity.y += GRAVITY * delta
 	get_input()
 	velocity = move_and_slide(velocity, Vector3.UP)
+	get_node(".").get_parent().get_node("CanvasLayer").get_node("life").set_text(str(quantidade_vidas))
+	get_node(".").get_parent().get_node("CanvasLayer").get_node("coins").set_text(str(coin))
 
 func _on_pega_moeda_body_entered(body):
 	body.moeda_coletada()
@@ -79,7 +76,7 @@ func morte():
 		morreu = true
 	else:
 		$".".transform.origin = start_position
-	print("Vidas: ", quantidade_vidas)
+		print("Vidas: ", quantidade_vidas)
 	#get_node(".").queue_free()
 
 
