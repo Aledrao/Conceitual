@@ -37,5 +37,5 @@ func _process(delta):
 			
 	velocity = move_and_slide(velocity, Vector3.UP)
 
-func morrer():
+func morrer():	
 	get_node(".").queue_free()

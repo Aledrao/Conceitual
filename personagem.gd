@@ -19,8 +19,6 @@ func _init():
 	posicao_z = get_node(".").transform.origin.z
 	checkpoint_position = $".".transform.origin
 	start_position = checkpoint_position
-	print("Vidas: ", quantidade_vidas)
-	print("Moeda: ", coin)
 
 func get_input():
 	if morreu:
@@ -31,11 +29,10 @@ func get_input():
 	if !finalizado:
 		var right = Input.is_action_pressed("ui_right")
 		var left = Input.is_action_pressed("ui_left")
-		var jump = Input.is_action_just_pressed("ui_up")
-		#var pause = Input.is_action_just_pressed("ui_cancel")
-		
+		var jump = Input.is_action_just_pressed("ui_up")		
 		
 		if is_on_floor() and jump:
+			get_node(".").get_parent().get_node("som_pulo").play()
 			velocity.y = JUMP_SPEEDY
 		if right:
 			velocity.x += RUN_SPEEDY
@@ -57,14 +54,14 @@ func _physics_process(delta):
 func _on_pega_moeda_body_entered(body):
 	body.moeda_coletada()
 	coin += 1
-	print("Moeda: ", coin)
 
 func _on_morre_body_entered(body):
 	morte()
 
 func _on_mata_body_entered(body):
-		velocity.y += JUMP_DIE
-		body.morrer()
+	get_node(".").get_parent().get_node("som_mata_bicho").play()
+	velocity.y += JUMP_DIE
+	body.morrer()
 
 
 func _on_leva_tiro_body_entered(body):
@@ -72,20 +69,24 @@ func _on_leva_tiro_body_entered(body):
 
 func morte():
 	if(quantidade_vidas >= 1):
+		get_node(".").get_parent().get_node("som_pancada").play()
 		quantidade_vidas -= 1
 		morreu = true
 	else:
+		get_node(".").get_parent().get_node("som_morte").play()
 		$".".transform.origin = start_position
-		print("Vidas: ", quantidade_vidas)
-	#get_node(".").queue_free()
+		get_tree().reload_current_scene()
 
 
 func _on_save_body_entered(body):
+	get_node(".").get_parent().get_node("som_checkpoint").play()
 	checkpoint_position = $".".transform.origin
 	body.salvar()
 
 
 func _on_finalizar_body_entered(body):
+	get_node(".").get_parent().get_node("som_principal").stop()
+	get_node(".").get_parent().get_node("som_finalizado").play()
 	finalizado = true
 	body.finalizar_jogo()
 	

@@ -23,7 +23,6 @@ var new_color
 
 func _ready():
 	posicao_z = get_node(".").transform.origin.z
-	print("Vida monstro: ", vida)
 
 func _physics_process(delta):
 	velocity.x = 0
@@ -98,9 +97,9 @@ func zerar_pulo():
 
 func morrer():
 	vida -= 1
-	print("Vida monstro: ", vida)	
 	
 	if(vida > 0):
+		get_node(".").get_parent().get_node("som_agride_bicho").play()
 		if(vida == 3):
 			new_color = "ea19d3"
 		if(vida == 2):
@@ -112,4 +111,5 @@ func morrer():
 		newMaterial.albedo_color = Color(new_color)
 		$MeshInstance.material_override = newMaterial
 	if(vida <= 0):
+		get_node(".").get_parent().get_node("som_mata_bicho")
 		get_node(".").queue_free()

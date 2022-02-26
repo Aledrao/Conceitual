@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://personagem.gd" type="Script" id=1]
 [ext_resource path="res://moeda.gd" type="Script" id=2]
@@ -9,6 +9,15 @@
 [ext_resource path="res://trofeu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://pause_menu.tscn" type="PackedScene" id=8]
 [ext_resource path="res://CHIBY LOVER DEMO.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://awesomeness.wav" type="AudioStream" id=10]
+[ext_resource path="res://Coin 3.wav" type="AudioStream" id=11]
+[ext_resource path="res://Jump 3.wav" type="AudioStream" id=12]
+[ext_resource path="res://Select 3.wav" type="AudioStream" id=13]
+[ext_resource path="res://Select 2.wav" type="AudioStream" id=14]
+[ext_resource path="res://Shoot 1.wav" type="AudioStream" id=15]
+[ext_resource path="res://Noise Select 2.wav" type="AudioStream" id=16]
+[ext_resource path="res://Fly 3.wav" type="AudioStream" id=17]
+[ext_resource path="res://Level Up!/chipquest.wav" type="AudioStream" id=18]
 
 [sub_resource type="CylinderMesh" id=1]
 
@@ -1315,6 +1324,646 @@ transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 88.4903,
 collision_layer = 128
 collision_mask = 128
 
+[node name="spike61" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 23.853, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike62" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 24.0047, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike63" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 24.1572, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike64" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 24.3089, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike65" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 24.4611, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike66" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 24.6127, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike67" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 24.7653, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike68" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 24.9169, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike69" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 25.0691, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike70" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 25.2207, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike71" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 25.3733, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike72" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 25.5249, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike73" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 25.6771, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike74" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 25.8288, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike75" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 25.9813, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike76" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 26.133, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike77" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 26.2865, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike78" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 26.4381, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike79" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 26.5907, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike80" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 26.7423, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike81" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 26.8945, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike82" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 27.0462, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike83" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 27.1987, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike84" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 27.3504, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike85" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 27.5025, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike86" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 27.6542, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike87" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 27.8067, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike88" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 27.9584, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike89" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 28.1106, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike90" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 28.2622, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike91" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 28.4148, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike92" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 28.5664, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike93" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 28.7218, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike94" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 28.8735, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike95" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 29.0261, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike96" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 29.1777, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike97" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 29.3299, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike98" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 29.4816, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike99" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 29.6341, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike100" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 29.7858, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike101" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 29.9379, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike102" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 30.0895, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike103" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 30.2421, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike104" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 30.3937, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike105" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 30.5459, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike106" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 30.6976, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike107" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 30.8501, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike108" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 31.0018, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike109" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 31.1553, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike110" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 31.307, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike111" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 31.4595, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike112" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 31.6112, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike113" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 31.7634, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike114" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 31.915, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike115" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 32.0676, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike116" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 32.2192, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike117" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 32.3713, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike118" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 32.523, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike119" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 32.6755, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike120" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 32.8272, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike121" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 32.9794, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike122" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 33.1311, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike123" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 33.2836, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike124" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 33.4353, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike125" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 33.5968, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike126" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 33.7485, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike127" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 33.901, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike128" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 34.0527, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike129" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 34.2049, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike130" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 34.3565, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike131" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 34.5091, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike132" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 34.6607, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike133" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 34.8128, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike134" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 34.9645, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike135" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 35.117, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike136" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 35.2687, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike137" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 35.4209, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike138" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 35.5726, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike139" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 35.7251, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike140" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 35.8768, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike141" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 36.0303, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike142" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 36.1819, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike143" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 36.3345, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike144" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 36.4861, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike145" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 36.6383, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike146" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 36.79, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike147" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 36.9425, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike148" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 37.0942, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike149" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 37.2463, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike150" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 37.3979, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike151" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 37.5505, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike152" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 37.7021, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike153" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 37.8544, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike154" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.006, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike155" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.1586, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike156" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.3102, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike157" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.4656, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike158" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.6173, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike159" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.7698, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike160" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 38.9215, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike161" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.0737, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike162" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.2253, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike163" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.3779, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike164" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.5295, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike165" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.6817, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike166" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.8333, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike167" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 39.9859, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike168" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.1375, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike169" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.2897, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike170" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.4414, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike171" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.5939, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike172" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.7456, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike173" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 40.8991, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike174" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.0507, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike175" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.2033, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike176" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.3549, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike177" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.5071, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike178" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.6588, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike179" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.8113, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike180" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 41.963, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike181" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.1151, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike182" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.2668, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike183" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.4193, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike184" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.571, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike185" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.7232, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike186" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 42.8748, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike187" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.0274, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="spike188" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.0734528, 0, 0, 0, 0.117921, 0, 0, 0, 0.273996, 43.179, 2.54417, 0 )
+collision_layer = 128
+collision_mask = 128
+
 [node name="inimigo_segue" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.177658, 0, 0, 0, -9.53059e-09, -0.218035, 0, 0.162416, -7.09943e-09, 50.6034, 10.3413, 0 )
 
@@ -1405,6 +2054,34 @@ text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="som_principal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
+
+[node name="som_moeda" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+
+[node name="som_pulo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+
+[node name="som_mata_bicho" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
+
+[node name="som_agride_bicho" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 14 )
+
+[node name="som_pancada" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 15 )
+
+[node name="som_morte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 16 )
+
+[node name="som_checkpoint" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 17 )
+
+[node name="som_finalizado" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 18 )
 
 [connection signal="body_entered" from="personagem/pega_moeda" to="personagem" method="_on_pega_moeda_body_entered"]
 [connection signal="body_entered" from="personagem/mata" to="personagem" method="_on_mata_body_entered"]
